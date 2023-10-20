@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              highlight: "#f1a33c",
+              grayBtn: "#5f636b",
+              grayBtnHover: "#9fa2a7",
+              darkGrayBtn: "#40434e",
+            },
+          },
+        },
+      };
+    </script>
+    <script src="main.js" defer></script>
+    <title>Calculadora | Codo A Codo</title>
+  </head>
+  <body
+    class="grid min-h-screen place-content-center bg-gradient-to-br from-slate-800 to-slate-500 text-white"
+  >
+    <main
+      class="my-12 w-[350px] overflow-hidden rounded-xl bg-slate-800/70 drop-shadow-md"
+    >
+      <section class="h-[115px] space-y-2 p-3">
+        <div class="group flex h-[20px] items-center justify-start gap-2">
+          <span
+            class="flex h-4 w-4 cursor-default items-center justify-center rounded-full bg-red-500 text-sm font-normal text-transparent transition-all duration-150 ease-in-out group-hover:text-slate-600"
+            >x</span
+          >
+          <span
+            class="flex h-4 w-4 cursor-default items-center justify-center rounded-full bg-yellow-400 text-sm font-normal text-transparent transition-all duration-150 ease-in-out group-hover:text-slate-600"
+            >-</span
+          >
+          <span
+            class="flex h-4 w-4 cursor-default items-center justify-center rounded-full bg-green-500 text-sm font-normal text-transparent transition-all duration-150 ease-in-out group-hover:text-slate-600"
+            >+</span
+          >
+        </div>
+        <div class="flex h-[70px] w-full flex-col justify-between" id="display">
+          <div
+            class="flex w-full items-center justify-end rounded-sm bg-slate-600/30 px-4 drop-shadow-sm"
+            data-previous-operand
+          ></div>
+          <div
+            class="border-none bg-transparent px-3 text-right text-6xl font-extralight outline-none"
+            data-current-operand
+          >
+            0
+          </div>
+        </div>
+      </section>
+      <section
+        class="grid h-[350px] grid-cols-4 gap-[2px] text-3xl font-normal"
+      >
+        <button
+          class="clear-btn bg-darkGrayBtn hover:bg-grayBtn flex cursor-default items-center justify-center p-3 uppercase transition-all duration-150 ease-in-out"
+          data-all-clear
+        >
+          ac
+        </button>
+        <button
+          class="toggle-sign-btn bg-darkGrayBtn hover:bg-grayBtn flex cursor-default items-center justify-center p-3 uppercase transition-all duration-150 ease-in-out"
+          data-delete
+        >
+          c
+        </button>
+        <button
+          class="operation-btn bg-darkGrayBtn hover:bg-grayBtn flex cursor-default items-center justify-center p-3 transition-all duration-150 ease-in-out"
+          data-operation
+        >
+          %
+        </button>
+        <button
+          class="operation-btn bg-highlight flex cursor-default items-center justify-center p-3 transition-all duration-150 ease-in-out hover:opacity-80"
+          data-operation
+        >
+          &div;
+        </button>
+        <button
+          class="number-btn bg-grayBtn hover:bg-grayBtnHover flex cursor-default items-center justify-center p-3 transition-all duration-150 ease-in-out"
+          data-number
+        >
+          7
+        </button>
+        <button
+          class="number-btn bg-grayBtn hover:bg-grayBtnHover flex cursor-default items-center justify-center p-3 transition-all duration-150 ease-in-out"
+          data-number
+        >
+          8
+        </button>
+        <button
+          class="number-btn bg-grayBtn hover:bg-grayBtnHover flex cursor-default items-center justify-center p-3 transition-all duration-150 ease-in-out"
+          data-number
+        >
+          9
+        </button>
+        <button
+          class="operation-btn bg-highlight flex cursor-default items-center justify-center p-3 transition-all duration-150 ease-in-out hover:opacity-80"
+          data-operation
+        >
+          x
+        </button>
+        <button
+          class="number-btn bg-grayBtn hover:bg-grayBtnHover flex cursor-default items-center justify-center p-3 transition-all duration-150 ease-in-out"
+          data-number
+        >
+          4
+        </button>
+        <button
+          class="number-btn bg-grayBtn hover:bg-grayBtnHover flex cursor-default items-center justify-center p-3 transition-all duration-150 ease-in-out"
+          data-number
+        >
+          5
+        </button>
+        <button
+          class="number-btn bg-grayBtn hover:bg-grayBtnHover flex cursor-default items-center justify-center p-3 transition-all duration-150 ease-in-out"
+          data-number
+        >
+          6
+        </button>
+        <button
+          class="operation-btn bg-highlight flex cursor-default items-center justify-center p-3 transition-all duration-150 ease-in-out hover:opacity-80"
+          data-operation
+        >
+          -
+        </button>
+        <button
+          class="number-btn bg-grayBtn hover:bg-grayBtnHover flex cursor-default items-center justify-center p-3 transition-all duration-150 ease-in-out"
+          data-number
+        >
+          1
+        </button>
+        <button
+          class="number-btn bg-grayBtn hover:bg-grayBtnHover flex cursor-default items-center justify-center p-3 transition-all duration-150 ease-in-out"
+          data-number
+        >
+          2
+        </button>
+        <button
+          class="number-btn bg-grayBtn hover:bg-grayBtnHover flex cursor-default items-center justify-center p-3 transition-all duration-150 ease-in-out"
+          data-number
+        >
+          3
+        </button>
+        <button
+          class="operation-btn bg-highlight flex cursor-default items-center justify-center p-3 transition-all duration-150 ease-in-out hover:opacity-80"
+          data-operation
+        >
+          +
+        </button>
+        <button
+          class="number-btn bg-grayBtn hover:bg-grayBtnHover col-span-2 flex cursor-default items-center justify-center p-3 transition-all duration-150 ease-in-out"
+          data-number
+        >
+          0
+        </button>
+        <button
+          class="number-btn bg-grayBtn hover:bg-grayBtnHover flex cursor-default items-center justify-center p-3 transition-all duration-150 ease-in-out"
+          data-number
+        >
+          .
+        </button>
+        <button
+          class="equal-btn bg-highlight flex cursor-default items-center justify-center p-3 transition-all duration-150 ease-in-out hover:opacity-80"
+          data-equals
+        >
+          =
+        </button>
+      </section>
+    </main>
+  </body>
+</html>
